@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "eg-inventory-blur",
+	"version": "${version}",
+	"name": "eg-inventory-blur",
+	"description": "Applies the new menu background blur to Inventories such as chests, the player inventory, etc.",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/eg-inventory-blur/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"client": [
+			"games.enchanted.inventoryblur.InventoryBlurClient"
+		]
+	},
+	"mixins": [
+		{
+			"config": "eg-inventory-blur.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.15.11",
+		"minecraft": ">=1.20.5",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
