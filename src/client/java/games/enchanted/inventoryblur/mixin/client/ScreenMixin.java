@@ -26,11 +26,10 @@ public abstract class ScreenMixin {
 
 	// redirect call to render gradient and do nothing
 	@Redirect(
-		method = "renderInGameBackground()V",
+		method = "Lnet/minecraft/client/gui/screen/Screen;renderInGameBackground(Lnet/minecraft/client/gui/DrawContext;)V",
 		at = @At(
 			value = "INVOKE",
-			target = "Lnet/minecraft/client/gui/DrawContext;fillGradient(IIIIII)V",
-			remap = false
+			target = "Lnet/minecraft/client/gui/DrawContext;fillGradient(IIIIII)V"
 		)
 	)
 	public void ignoreGradientCall(DrawContext context, int startX, int startY, int endX, int endY, int colorStart, int colorEnd) {
