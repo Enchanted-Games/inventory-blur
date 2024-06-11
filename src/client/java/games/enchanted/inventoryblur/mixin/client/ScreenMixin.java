@@ -15,18 +15,18 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Screen.class)
 public abstract class ScreenMixin {
 	@Unique
-	private static final Identifier INWORLD_INVENTORY_BACKGROUND_TEXTURE = new Identifier("eg-inventory-blur","textures/gui/inworld_inventory_background.png");
+	private static final Identifier INWORLD_INVENTORY_BACKGROUND_TEXTURE = Identifier.of("eg-inventory-blur","textures/gui/inworld_inventory_background.png");
 
 	@Shadow
-	int width;
+    public int width;
 	@Shadow
-	int height;
+    public int height;
 	@Shadow
-	abstract void applyBlur(float delta);
+    protected abstract void applyBlur(float delta);
 
 	// redirect call to render gradient and do nothing
 	@Redirect(
-		method = "Lnet/minecraft/client/gui/screen/Screen;renderInGameBackground(Lnet/minecraft/client/gui/DrawContext;)V",
+		method = "renderInGameBackground(Lnet/minecraft/client/gui/DrawContext;)V",
 		at = @At(
 			value = "INVOKE",
 			target = "Lnet/minecraft/client/gui/DrawContext;fillGradient(IIIIII)V"
@@ -38,8 +38,7 @@ public abstract class ScreenMixin {
 	// inject into renderInGameBackground to render background texture and apply blur
 	@Inject(
 		at = @At("HEAD"),
-		cancellable = true,
-		method = "Lnet/minecraft/client/gui/screen/Screen;renderInGameBackground(Lnet/minecraft/client/gui/DrawContext;)V"
+		method = "renderInGameBackground(Lnet/minecraft/client/gui/DrawContext;)V"
 	)
 	public void renderInGameBackground(DrawContext context, CallbackInfo ci) {
 		this.applyBlur(1.0f);
