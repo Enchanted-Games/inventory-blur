@@ -22,7 +22,7 @@ public abstract class ScreenMixin {
 	@Shadow
     public int height;
 	@Shadow
-    protected abstract void applyBlur(float delta);
+    protected abstract void applyBlur();
 
 	// redirect call to render gradient and do nothing
 	@Redirect(
@@ -41,7 +41,7 @@ public abstract class ScreenMixin {
 		method = "renderInGameBackground(Lnet/minecraft/client/gui/DrawContext;)V"
 	)
 	public void renderInGameBackground(DrawContext context, CallbackInfo ci) {
-		this.applyBlur(1.0f);
+		this.applyBlur();
 		Screen.renderBackgroundTexture(context, INWORLD_INVENTORY_BACKGROUND_TEXTURE, 0, 0, 0.0f, 0.0f, width, height);
 	}
 }
