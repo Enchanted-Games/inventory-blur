@@ -20,10 +20,10 @@ public abstract class ScreenMixin {
     @Shadow public int width;
     @Shadow public int height;
     //? if minecraft: >= 1.21.6 {
-    /*@Shadow protected abstract void renderBlurredBackground(GuiGraphics par1);*/
-    //? } else {
-    @Shadow protected abstract void renderBlurredBackground();
-    //? }
+    @Shadow protected abstract void renderBlurredBackground(GuiGraphics par1);
+    //?} else {
+    /*@Shadow protected abstract void renderBlurredBackground();
+    *///?}
 
     @WrapOperation(
         method = "renderTransparentBackground",
