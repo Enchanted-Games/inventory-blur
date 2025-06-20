@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "${id}",
+  "provides": [
+    "eg-inventory-blur"
+  ],
+  "version": "${version}",
+  "name": "${name}",
+  "description": "${description}",
+  "authors": [
+    "${authors}"
+  ],
+  "contact": {
+    "homepage": "${website}",
+    "sources": "${source_url}",
+    "issues": "${issue_tracker}"
+  },
+  "license": "${license}",
+  "icon": "${icon}",
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "${fabric_common_entry}"
+    ],
+    "client": [
+      "${fabric_client_entry}"
+    ]
+  },
+${mixin_field}
+${dependencies_field}
+}
