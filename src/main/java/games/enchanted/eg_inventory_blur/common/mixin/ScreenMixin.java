@@ -40,7 +40,11 @@ public abstract class ScreenMixin {
         method = "renderTransparentBackground"
     )
     public void eg_inventory_blur$applyBlurAndDrawBG(GuiGraphics guiGraphics, CallbackInfo ci) {
-        this.renderBlurredBackground();
+        //? if minecraft: >= 1.21.6 {
+        this.renderBlurredBackground(guiGraphics);
+        //?} else {
+        /*this.renderBlurredBackground();
+         *///?}
         Screen.renderMenuBackgroundTexture(guiGraphics, INWORLD_INVENTORY_BACKGROUND_TEXTURE, 0, 0, 0.0f, 0.0f, width, height);
     }
 }
