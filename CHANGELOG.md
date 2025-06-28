@@ -1,4 +1,3 @@
-# 1.1.0
-- Updated to 1.21.5 and 1.21.6
-- Improved mixin compatibility (changed @Redirect to @WrapOperation)
-- Ported to NeoForge
+# 1.1.1
+- Updated mod info and add proper icon (forgot to after converting to stonecutter project)
+- Identical to 1.1.0 otherwise
