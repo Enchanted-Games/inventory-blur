@@ -260,7 +260,7 @@ class ModMixins {
     val vanillaMixin = "mixins.${mod.id}.json"
     val fabricMixin = "mixins.fabric.${mod.id}.json"
     val neoForgeMixin = "mixins.neoforge.${mod.id}.json"
-    val extraMixins = listProperty("mixins.extras")
+    val extraMixins = listProperty("mixins.extra")
 
     /**
      * Modify this method if you need better control over the mixin list.
@@ -272,6 +272,7 @@ class ModMixins {
             EnvType.FABRIC -> if(enableFabricMixin) out.add(fabricMixin)
             EnvType.NEOFORGE -> if(enableNeoforgeMixin) out.add(neoForgeMixin)
         }
+        extraMixins.forEach { mixinPath -> out.add(mixinPath) }
         return out
     }
 }

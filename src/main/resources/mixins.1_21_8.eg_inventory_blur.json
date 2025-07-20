@@ -1,12 +1,13 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "games.enchanted.eg_inventory_blur.common.mixin",
+  "package": "games.enchanted.eg_inventory_blur.common.mixin_1_21_6",
   "compatibilityLevel": "JAVA_${java_ver}",
   "mixins": [
   ],
   "client": [
-    "ScreenMixin"
+    "accessor.GuiRenderStateAccessor",
+    "accessor.GuiGraphicsAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

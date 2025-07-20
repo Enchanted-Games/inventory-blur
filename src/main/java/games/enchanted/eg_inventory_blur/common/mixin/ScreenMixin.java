@@ -12,6 +12,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+//? if minecraft: >= 1.21.6 {
+import games.enchanted.eg_inventory_blur.common.mixin_1_21_6.accessor.GuiGraphicsAccessor;
+import games.enchanted.eg_inventory_blur.common.mixin_1_21_6.accessor.GuiRenderStateAccessor;
+//?}
+
 @Mixin(value = Screen.class, priority = 200)
 public abstract class ScreenMixin {
     @Unique
@@ -41,6 +46,10 @@ public abstract class ScreenMixin {
     )
     public void eg_inventory_blur$applyBlurAndDrawBG(GuiGraphics guiGraphics, CallbackInfo ci) {
         //? if minecraft: >= 1.21.6 {
+        if(((GuiRenderStateAccessor) ((GuiGraphicsAccessor) guiGraphics).eg_inventory_blur$getGuiRenderState()).eg_inventory_blur$getFirstStratumAfterBlur() != Integer.MAX_VALUE) {
+            // dont draw the blur if its already been drawn this frame
+            return;
+        }
         this.renderBlurredBackground(guiGraphics);
         //?} else {
         /*this.renderBlurredBackground();

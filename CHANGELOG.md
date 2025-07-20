@@ -1,3 +1,3 @@
-# 1.1.1
-- Updated mod info and add proper icon (forgot to after converting to stonecutter project)
-- Identical to 1.1.0 otherwise
+# 1.2.0
+- Fixed a crash on 1.21.6 caused by the blur being rendered twice on the realms screen. Should also make this more stable with certain modded screens
+- Now compiled against 1.21.8
