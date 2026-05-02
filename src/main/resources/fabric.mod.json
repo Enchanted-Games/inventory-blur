@@ -1,31 +1,33 @@
 {
   "schemaVersion": 1,
   "id": "${id}",
-  "provides": [
-    "eg-inventory-blur"
-  ],
   "version": "${version}",
   "name": "${name}",
   "description": "${description}",
   "authors": [
-    "${authors}"
+    "Enchanted_Games"
   ],
   "contact": {
-    "homepage": "${website}",
     "sources": "${source_url}",
     "issues": "${issue_tracker}"
   },
   "license": "${license}",
   "icon": "${icon}",
-  "environment": "client",
+  "environment": "*",
   "entrypoints": {
     "main": [
-      "${fabric_common_entry}"
-    ],
-    "client": [
-      "${fabric_client_entry}"
+      "${group}.${id}.fabric.FabricEntry"
     ]
   },
-${mixin_field}
-${dependencies_field}
+  ${accesswidener_field}
+  "mixins": [
+    {
+      "config": "${id}.mixins.json"
+    }
+  ],
+  "depends": {
+    "minecraft": "${minecraft}",
+    "fabricloader": "${fabric_loader_dep_str}",
+    "fabric-api": "${fabric_api_dep_str}"
+  }
 }
